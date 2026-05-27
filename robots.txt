@@ -1,0 +1,8 @@
+﻿User-agent: *
+Allow: /
+Disallow: /images/
+
+Sitemap: https://bohaogroup.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 10
