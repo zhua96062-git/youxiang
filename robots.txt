@@ -1,8 +1,20 @@
-﻿User-agent: *
+# BohaoShipping robots.txt — Optimized for Google indexing
+# Last updated: 2026-05-28
+# Domain: https://bohaoshipping.com
+
+User-agent: Googlebot
 Allow: /
 Disallow: /images/
+Crawl-delay: 0
 
-Sitemap: https://bohaogroup.com/sitemap.xml
+User-agent: Bingbot
+Allow: /
+Disallow: /images/
+Crawl-delay: 0
 
-# Crawl-delay for respectful crawling
-Crawl-delay: 10
+User-agent: *
+Allow: /
+Disallow: /images/
+Crawl-delay: 5
+
+Sitemap: https://bohaoshipping.com/sitemap.xml
