@@ -743,3 +743,197 @@ ul { list-style: none; }
     .stat-number { font-size: 36px; }
     .container { padding: 0 16px; }
 }
+
+
+/* ==========================================
+   Language Toggle - BohaoGroup
+   ========================================== */
+.lang-toggle {
+    background: transparent;
+    border: 1.5px solid rgba(201, 168, 76, 0.5);
+    color: #c9a84c;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Noto Sans SC', sans-serif;
+    letter-spacing: 0.5px;
+    margin-left: 16px;
+    line-height: 1.6;
+}
+
+.lang-toggle:hover {
+    background: rgba(201, 168, 76, 0.15);
+    border-color: #c9a84c;
+    color: #d4b05a;
+}
+
+.lang-toggle.lang-cn {
+    /* CN mode: shows "EN" */
+    color: #c9a84c;
+}
+
+.lang-toggle.lang-en {
+    /* EN mode: shows "中文" */
+    color: #8899aa;
+    border-color: rgba(136, 153, 170, 0.4);
+}
+
+.lang-toggle.lang-en:hover {
+    background: rgba(136, 153, 170, 0.1);
+    color: #aabbcc;
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+/* ==========================================
+   Image Gallery - BohaoGroup
+   ========================================== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(10,22,40,0.9));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-caption {
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.gallery-item-wide {
+    grid-column: span 2;
+    aspect-ratio: 8/3;
+}
+
+/* ==========================================
+   Office Images in About Section
+   ========================================== */
+.about-image-wrap {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.about-image-wrap img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    height: 200px;
+    transition: transform 0.3s ease;
+}
+
+.about-image-wrap img:hover {
+    transform: scale(1.02);
+}
+
+/* ==========================================
+   Contact / Form improvements
+   ========================================== */
+.form-msg {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.form-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ==========================================
+   Hero image background
+   ========================================== */
+.hero-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* ==========================================
+   Responsive gallery
+   ========================================== */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    .gallery-item-wide {
+        grid-column: span 2;
+        aspect-ratio: 16/9;
+    }
+    .about-image-wrap {
+        grid-template-columns: 1fr;
+    }
+    .about-image-wrap img {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    .gallery-item-wide {
+        grid-column: span 1;
+        aspect-ratio: 4/3;
+    }
+    .lang-toggle {
+        font-size: 0.75rem;
+        padding: 2px 8px;
+        margin-left: 8px;
+    }
+}
