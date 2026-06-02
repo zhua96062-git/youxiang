@@ -337,18 +337,25 @@
             submitBtn.textContent = currentLang === "cn" ? "发送中..." : "Sending...";
             submitBtn.disabled = true;
 
+            // 创建 AbortController 添加 10 秒超时
+            const controller = new AbortController();
+            const timeoutId = setTimeout(function () { controller.abort(); }, 10000);
+
             // POST 到 Cloudflare Pages Function
             fetch(API_ENDPOINT, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name: name, email: email, message: message })
+                body: JSON.stringify({ name: name, email: email, message: message }),
+                signal: controller.signal
             })
             .then(function (resp) {
+                clearTimeout(timeoutId);
                 return resp.json().then(function (data) {
                     return { status: resp.status, data: data };
                 });
             })
             .then(function (result) {
+                clearTimeout(timeoutId);
                 if (result.data.success) {
                     showFormMessage(
                         currentLang === "cn"
@@ -367,7 +374,8 @@
                 }
             })
             .catch(function () {
-                // 网络错误时，使用 mailto 作为备用
+                clearTimeout(timeoutId);
+                // 超时或网络错误时，使用 mailto 作为备用
                 const mailto = "mailto:zhua96062@gmail.com?subject="
                     + encodeURIComponent("Inquiry from " + name)
                     + "&body="
@@ -375,8 +383,8 @@
                 window.open(mailto, "_blank");
                 showFormMessage(
                     currentLang === "cn"
-                        ? "网络异常，已打开邮件客户端作为备用。"
-                        : "Network error. Email client opened as backup.",
+                        ? "网络异常，已打开邮件客户端作为备用。\nNetwork error. Email client opened as backup."
+                        : "Network error. Email client opened as backup.\n网络异常，已打开邮件客户端作为备用。",
                     "info"
                 );
             })
