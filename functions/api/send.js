@@ -1,5 +1,6 @@
 // BohaoGroup 批量邮件发送 API (MailChannels)
 // POST /api/send
+// Redeploy trigger: $(date /t)
 // 调用方式见 README
 
 const RATE_LIMIT_PER_SECOND = 20;
