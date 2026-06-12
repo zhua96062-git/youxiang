@@ -24,7 +24,8 @@ async function sendViaMailChannels(to, subject, html, text, fromName) {
   const recipients = to.map(r => ({ email: r.email, name: r.name || r.email.split("@")[0] }));
   const mcBody = {
     personalizations: [{ to: recipients }],
-    from: { email: "noreply@bohaoshipping.com", name: fromName || "BohaoGroup" },
+    from: { email: "alex1@bohaoshipping.com", name: fromName || "Alex Zhang" },
+    reply_to: { email: "alex1@bohaoshipping.com", name: "Alex Zhang" },
     subject,
     content: [
       ...(html ? [{ type: "text/html", value: html }] : []),
@@ -60,7 +61,7 @@ async function handleSend(request) {
   if (!html && !text) return json({ error: "html or text content is required" }, 400);
 
   const start = Date.now();
-  const mc = await sendViaMailChannels(to, subject, html, text, from_name || "BohaoGroup");
+  const mc = await sendViaMailChannels(to, subject, html, text, from_name || "Alex Zhang");
   return json({
     success: mc.ok,
     sent: mc.ok ? to.length : 0,
@@ -95,7 +96,8 @@ async function handleInquiry(request) {
     const html = \`<p>Hi \${name},</p><p>Thanks for your inquiry. We will respond within 24 hours.</p><p>Boha Shipping</p>\`;
     const mcBody = {
       personalizations: [{ to: [{ email, name }] }],
-      from: { email: "noreply@bohaoshipping.com", name: "BohaoGroup" },
+      from: { email: "alex1@bohaoshipping.com", name: "Alex Zhang" },
+    reply_to: { email: "alex1@bohaoshipping.com", name: "Alex Zhang" },
       subject: "Thank you for your inquiry - BohaoGroup",
       content: [{ type: "text/html", value: html }]
     };

@@ -60,7 +60,8 @@ export async function onRequest(context) {
                     headers: { "content-type": "application/json" },
                     body: JSON.stringify({
                         personalizations: [{ to: [{ email, name }] }],
-                        from: { email: "noreply@bohaoshipping.com", name: from_name || "BohaoGroup" },
+                        from: { email: "alex1@bohaoshipping.com", name: from_name || "Alex Zhang" },
+                        reply_to: { email: "alex1@bohaoshipping.com", name: "Alex Zhang" },
                         subject,
                         content: [...(html ? [{ type: "text/html", value: pHtml }] : []), ...(text ? [{ type: "text/plain", value: pText }] : [])]
                     })
@@ -77,7 +78,8 @@ export async function onRequest(context) {
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify({
                     personalizations: [{ to: recipients }],
-                    from: { email: "noreply@bohaoshipping.com", name: from_name || "BohaoGroup" },
+                    from: { email: "alex1@bohaoshipping.com", name: from_name || "Alex Zhang" },
+                        reply_to: { email: "alex1@bohaoshipping.com", name: "Alex Zhang" },
                     subject,
                     content: [...(html ? [{ type: "text/html", value: html }] : []), ...(text ? [{ type: "text/plain", value: text }] : [])]
                 })

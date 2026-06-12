@@ -77,7 +77,7 @@ export async function onRequest(context) {
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify({
                     personalizations: [{ to: [{ email: "zhua96062@gmail.com" }] }],
-                    from: { email: "noreply@bohaoshipping.com", name: "BohaoGroup" },
+                    from: { email: "alex1@bohaoshipping.com", name: "Alex Zhang" },
                     subject: `新询价 - ${name}`,
                     content: [{ type: "text/plain", value: emailBody }]
                 })
